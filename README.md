@@ -2,7 +2,7 @@
 learning / practicing python in google colabotary
 
 ### \# Resources
-- https://gist.github.com/b1tranger/947338764fb8b1bf9960567e7180e0f8
+- [VScodeSettings.md](https://gist.github.com/b1tranger/947338764fb8b1bf9960567e7180e0f8)
 
 ### \# Guide/suggestions on transition to AI route
 - [@heySolus](https://github.com/zobayersq):
