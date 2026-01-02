@@ -7,6 +7,7 @@ learning / practicing python in google colabotary
 ### \# Guide/suggestions on transition to AI route
 - [@heySolus](https://github.com/zobayersq):
 "Learn basic python (freecodecamp) -> very basics of ML (grameenphone academy, freecodecamp) (learn by doing a project)-> basics of gen AI (cs50 AI, freecodecamp, inception bd) -> coose a part of AI and start research"
+- [@SamudraJS](https://github.com/SamudraJS) : "Do 50 problem solving on CodeForces, get used to Python, then we will talk about AI. Almost everything can be done with Python now."
 
 
 
