@@ -1,0 +1,8 @@
+numb = input()
+a,b,c,d = numb.split()
+a = int(a)
+b = int(b)
+c = int(c)
+d = int(d)
+X = (a*b) - (c*d)
+print(f"{X}")
