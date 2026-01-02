@@ -22,7 +22,12 @@ learning / practicing python in google colabotary. And transitioning into the AI
 >"Do 50 problem solves on CodeForces, get used to Python, then we will talk about AI. Almost everything can be done with Python now." <br> 
 >"follow the course [CS 188 Spring 2025](https://inst.eecs.berkeley.edu/~cs188/sp25/) for AI"
 
+### \# Problem Sets
+- [Assiut University Training - Newcomers](https://codeforces.com/group/MWSDmqGsZm/contests)
 
+### \# Contributors (CodeForces)
+- [BitRanger](https://codeforces.com/profile/BitRanger)
+- [Tatatin](https://codeforces.com/profile/Tatatin)
 
 ### \# explaining merge conflict
 - changes 1
