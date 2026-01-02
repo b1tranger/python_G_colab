@@ -27,7 +27,11 @@ learning / practicing python in google colabotary. And transitioning into the AI
 
 ### \# Contributors (CodeForces)
 - [BitRanger](https://codeforces.com/profile/BitRanger)
+<img width="629" height="592" alt="Screenshot 2026-01-03 015706" src="https://github.com/user-attachments/assets/7d6598a8-57fc-418f-9797-3893c51c7e50" />
+
 - [Tatatin](https://codeforces.com/profile/Tatatin)
+<img width="774" height="712" alt="cf_rank_magic_tatatin_2" src="https://github.com/user-attachments/assets/a2c3461b-ca1b-4234-b43c-606caf2c8dc8" />
+
 
 ### \# explaining merge conflict
 - changes 1
