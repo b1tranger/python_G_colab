@@ -1,3 +1,4 @@
+  > related repo [Programming-Records](https://github.com/b1tranger/Programming-Records/)
 # \# python_G_colab
 learning / practicing python in google colabotary. And transitioning into the AI career path.
 
