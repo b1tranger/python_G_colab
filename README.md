@@ -7,6 +7,7 @@ learning / practicing python in google colabotary. And transitioning into the AI
 
 
 ### \# Resources
+- https://roadmap.sh/python
 - [VScodeSettings.md](https://gist.github.com/b1tranger/947338764fb8b1bf9960567e7180e0f8)
 - Books (preference):
     - Discrete Mathematics
