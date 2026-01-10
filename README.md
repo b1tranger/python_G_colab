@@ -5,6 +5,10 @@ learning / practicing python in google colabotary. And transitioning into the AI
 ### \# Concepts to Learn
 - Algorithms (Especially, Number Theory)
 
+### # purpose
+- Python Basics
+- AI stuff using Python
+- Godot GDscript similar to Python
 
 ### \# Resources
 - https://roadmap.sh/python
