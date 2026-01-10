@@ -16,8 +16,9 @@ learning / practicing python in google colabotary. And transitioning into the AI
     - The_Art_of_Doing_Science_and_Engineering - Hamming_1997
 - Videos
     - CS50 videos on YouTube (currently 2026 playlist)
-- Cyber Security | https://roadmap.sh/ai/course/intermediate-python-for-network-pen-testing
-- 
+- Cyber Security
+  - [intermediate-python-for-network-pen-testing](https://roadmap.sh/ai/course/intermediate-python-for-network-pen-testing)
+  - [Binary Exploitation / Memory Corruption by LiveOverflow by LiveOverflow ](https://www.youtube.com/playlist?list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN)
 
 ### \# Guide/suggestions on transition to AI route
 - [@zobayersq](https://github.com/zobayersq): <br> 
