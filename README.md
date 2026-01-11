@@ -14,10 +14,10 @@ learning / practicing python in google colabotary. And transitioning into the AI
 - https://roadmap.sh/python
 - [VScodeSettings.md](https://gist.github.com/b1tranger/947338764fb8b1bf9960567e7180e0f8)
 - Books (preference):
-    - Discrete Mathematics
-    - Clean Code
-    - Art of Programming
-    - The_Art_of_Doing_Science_and_Engineering - Hamming_1997
+    - Discrete Mathematics [link](https://t.me/b1tranger_stash/20?comment=527)
+    - Clean Code [link](https://t.me/b1tranger_stash/20?comment=538)
+    - Art of Programming [link](https://t.me/b1tranger_stash/20?comment=531)
+    - The_Art_of_Doing_Science_and_Engineering - Hamming_1997 [link](https://t.me/b1tranger_stash/20?comment=530)
 - Videos
     - CS50 videos on YouTube (currently 2026 playlist)
 - Cyber Security
