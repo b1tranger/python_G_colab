@@ -9,6 +9,7 @@ learning / practicing python in google colabotary. And transitioning into the AI
 - Python Basics
 - AI stuff using Python
 - Game Dev: PyGame. Godot GDscript similar to Python
+- BackEnd: Django
 
 ### # Resources
 - https://roadmap.sh/python
