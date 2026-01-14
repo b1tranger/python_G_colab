@@ -13,6 +13,7 @@ learning / practicing python in google colabotary. And transitioning into the AI
 
 ### # Resources
 - https://roadmap.sh/python
+- gist [learn.python.md](https://gist.github.com/b1tranger/65c517847062857ac68ea6c83a214ac0)
 - [VScodeSettings.md](https://gist.github.com/b1tranger/947338764fb8b1bf9960567e7180e0f8)
 - Books: (see [resources](https://github.com/b1tranger/Programming-Records/blob/main/README.md#-resources))
 - Videos
