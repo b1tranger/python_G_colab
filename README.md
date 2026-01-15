@@ -7,7 +7,7 @@ learning / practicing python in google colabotary. And transitioning into the AI
 
 ### # purpose
 - Python Basics
-- AI stuff using Python
+- AI stuff using Python: https://opencv.org/, ML
 - Game Dev: PyGame. Godot GDscript similar to Python
 - BackEnd: Django
 
