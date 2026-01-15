@@ -40,9 +40,5 @@ learning / practicing python in google colabotary. And transitioning into the AI
 <img width="774" height="712" alt="cf_rank_magic_tatatin_2" src="https://github.com/user-attachments/assets/a2c3461b-ca1b-4234-b43c-606caf2c8dc8" />
 
 
-### # explaining merge conflict
-- changes 1
-- changes 2 (without Fetch Origin)
-- changed 3 (trying to Push without doing Pull Origin first, triggering Merge Conflict)
-- changes 2 (merge conflict detected)
-- changes 4 (resolved Merge Conflict with "changes 2")
+### # references
+- https://github.com/rashakil-ds/60-days-of-python
