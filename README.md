@@ -10,6 +10,7 @@ learning / practicing python in google colabotary. And transitioning into the AI
 - AI stuff using Python: https://opencv.org/, ML
 - Game Dev: PyGame. Godot GDscript similar to Python
 - BackEnd: Django
+- Social Bot: Discord.py | [Related repo](https://github.com/b1tranger/learning-API)
 - > misc. : pandas
 
 ### # Resources
