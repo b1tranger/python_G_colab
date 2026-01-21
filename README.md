@@ -14,6 +14,7 @@ learning / practicing python in google colabotary. And transitioning into the AI
 - > misc. : pandas
 
 ### # Resources
+- [vinta/awesome-python](https://github.com/vinta/awesome-python) | An opinionated list of awesome Python frameworks, libraries, software and resources.
 - https://roadmap.sh/python
 - gist [learn.python.md](https://gist.github.com/b1tranger/65c517847062857ac68ea6c83a214ac0)
 - [VScodeSettings.md](https://gist.github.com/b1tranger/947338764fb8b1bf9960567e7180e0f8)
