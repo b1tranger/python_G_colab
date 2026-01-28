@@ -45,3 +45,4 @@ learning / practicing python in google colabotary. And transitioning into the AI
 
 ### # references
 - https://github.com/rashakil-ds/60-days-of-python
+- https://github.com/SoyebAkram/Hand_Gesture_control__system
