@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>UITS Department of CSE Attendance Fine Spring 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f1e38;
+  --navy2:#162547;
+  --navy3:#1e3260;
+  --accent:#2563eb;
+  --accent-light:#3b82f6;
+  --gold:#f59e0b;
+  --surface:#ffffff;
+  --surface2:#f8fafc;
+  --surface3:#f1f5f9;
+  --border:#e2e8f0;
+  --border2:#cbd5e1;
+  --text:#0f172a;
+  --text2:#475569;
+  --text3:#94a3b8;
+  --red:#ef4444;
+  --red-bg:#fef2f2;
+  --red-border:#fecaca;
+  --green:#16a34a;
+  --green-bg:#f0fdf4;
+  --green-border:#bbf7d0;
+  --amber:#d97706;
+  --amber-bg:#fffbeb;
+  --amber-border:#fde68a;
+  --radius:8px;
+  --radius-lg:12px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.05);
+}
+body{font-family:'Inter',sans-serif;background:var(--surface3);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+
+/* ── TOPNAV ── */
+.topnav{background:var(--navy);color:#fff;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+.topnav-brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;letter-spacing:.01em}
+.brand-chip{background:var(--accent);color:#fff;font-size:.65rem;font-weight:600;padding:2px 7px;border-radius:4px;letter-spacing:.06em;text-transform:uppercase}
+.topnav-links{display:flex;gap:4px}
+.topnav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:.82rem;padding:6px 12px;border-radius:6px;transition:all .15s}
+.topnav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.75rem;padding:4px 12px;border-radius:6px;font-weight:500}
+
+/* ── BREADCRUMB HEADER ── */
+.page-header{background:var(--surface);border-bottom:1px solid var(--border);padding:20px 24px}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text3);margin-bottom:6px}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb .sep{color:var(--text3)}
+.page-title{font-size:1.5rem;font-weight:600;color:var(--text)}
+.page-sub{font-size:.82rem;color:var(--text2);margin-top:2px}
+
+/* ── LAYOUT ── */
+.layout{display:flex;flex:1;max-width:1100px;margin:0 auto;width:100%;gap:0}
+.sidebar{width:210px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);padding:16px 0}
+.main-content{flex:1;padding:24px;min-width:0}
+
+/* ── SIDEBAR ── */
+.sidebar-section{padding:8px 0}
+.sidebar-label{font-size:.68rem;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;padding:6px 16px 4px}
+.sidebar-item{display:flex;align-items:center;gap:10px;padding:8px 16px;cursor:pointer;font-size:.83rem;color:var(--text2);border-left:2px solid transparent;transition:all .15s;user-select:none}
+.sidebar-item:hover{background:var(--surface2);color:var(--text)}
+.sidebar-item.active{background:var(--surface2);color:var(--accent);border-left-color:var(--accent);font-weight:500}
+.sidebar-icon{width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:13px;opacity:.7}
+.sidebar-item.active .sidebar-icon{opacity:1}
+
+/* ── STEP PROGRESS ── */
+.step-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 28px;margin-bottom:20px;display:flex;align-items:center;gap:0}
+.step{display:flex;align-items:center;gap:8px;flex:1}
+.step-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--border2);background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:600;color:var(--text3);flex-shrink:0;transition:all .3s}
+.step-dot.done{background:var(--accent);border-color:var(--accent);color:#fff}
+.step-dot.active{background:var(--surface);border-color:var(--accent);color:var(--accent)}
+.step-label{font-size:.78rem;color:var(--text3);font-weight:500}
+.step.active .step-label{color:var(--accent);font-weight:600}
+.step.done .step-label{color:var(--text2)}
+.step-line{flex:1;height:1px;background:var(--border);margin:0 8px;max-width:80px}
+.step-line.done{background:var(--accent)}
+
+/* ── SEARCH SECTION ── */
+.section-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:20px;overflow:hidden;box-shadow:var(--shadow)}
+.section-card-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.section-card-title{font-size:.82rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px}
+.section-card-title .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.section-card-body{padding:20px}
+
+.input-group{display:flex;gap:10px;align-items:center}
+.input-wrap{flex:1;position:relative}
+.input-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none}
+#sid-input{width:100%;height:40px;border:1px solid var(--border2);border-radius:var(--radius);padding:0 12px 0 38px;font-family:'IBM Plex Mono',monospace;font-size:.9rem;color:var(--text);background:var(--surface);outline:none;transition:border-color .15s}
+#sid-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+#sid-input::placeholder{color:var(--text3);font-family:'Inter',sans-serif}
+
+.btn{height:40px;padding:0 20px;border:none;border-radius:var(--radius);font-family:'Inter',sans-serif;font-weight:500;font-size:.85rem;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#1d4ed8}
+.btn-primary:active{transform:scale(.97)}
+.btn-ghost{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--surface3);color:var(--text)}
+
+/* ── ERROR ── */
+.alert{border-radius:var(--radius);padding:12px 16px;font-size:.83rem;display:flex;gap:10px;align-items:flex-start}
+.alert-error{background:var(--red-bg);border:1px solid var(--red-border);color:#b91c1c}
+.alert svg{flex-shrink:0;margin-top:1px}
+
+/* ── STUDENT HEADER ── */
+.student-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow)}
+.avatar{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#1e3a8a,#2563eb);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#fff;flex-shrink:0}
+.student-meta h2{font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.meta-row{display:flex;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-family:'IBM Plex Mono',monospace;background:var(--surface3);border:1px solid var(--border);color:var(--text2);padding:2px 8px;border-radius:4px}
+.chip-blue{background:#eff6ff;border-color:#bfdbfe;color:#1e40af}
+.chip-green{background:var(--green-bg);border-color:var(--green-border);color:var(--green)}
+
+/* ── UNDER-ATTENDANCE ── */
+.ua-banner{background:var(--red-bg);border:1px solid var(--red-border);border-left:3px solid var(--red);border-radius:var(--radius-lg);padding:16px 20px;margin-bottom:20px;display:flex;gap:14px}
+.ua-banner .ua-icon{font-size:1.2rem;flex-shrink:0}
+.ua-banner h3{font-size:.83rem;font-weight:600;color:#991b1b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.ua-banner p{font-size:.82rem;color:#b91c1c;line-height:1.6}
+.ua-banner strong{color:#7f1d1d;font-weight:600}
+
+/* ── TABLE ── */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.83rem}
+thead tr{background:var(--surface2)}
+thead th{padding:10px 16px;text-align:left;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);border-bottom:1px solid var(--border);white-space:nowrap}
+thead th:last-child{text-align:right}
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--surface2)}
+td{padding:11px 16px;vertical-align:middle}
+td.code{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--accent);font-weight:500;white-space:nowrap}
+td.course-name{color:var(--text)}
+td.fine-cell{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:500;white-space:nowrap}
+td.fine-red{color:var(--red)}
+td.fine-green{color:var(--green)}
+
+/* ── TOTALS ── */
+.totals-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:0 0 var(--radius-lg) var(--radius-lg);overflow:hidden}
+.total-cell{background:var(--surface);padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.total-cell.highlight{background:var(--navy);color:#fff}
+.total-cell.waiver-cell{background:var(--green-bg)}
+.total-label{font-size:.78rem;color:var(--text2);font-weight:500}
+.total-cell.highlight .total-label{color:rgba(255,255,255,.65)}
+.total-cell.waiver-cell .total-label{color:var(--green)}
+.total-value{font-family:'IBM Plex Mono',monospace;font-size:1rem;font-weight:600;color:var(--text)}
+.total-cell.highlight .total-value{color:#fff;font-size:1.1rem}
+.total-cell.waiver-cell .total-value{color:var(--green)}
+.total-value.red{color:var(--red)}
+.total-value.green{color:var(--green)}
+.cap-tag{font-size:.65rem;background:var(--amber-bg);border:1px solid var(--amber-border);color:var(--amber);padding:1px 6px;border-radius:3px;font-family:'Inter',sans-serif;font-weight:500;margin-left:6px}
+.no-waiver{color:var(--text3);font-size:.78rem;font-style:italic;font-family:'Inter',sans-serif}
+
+@media(max-width:800px){.sidebar{display:none}.layout{flex-direction:column}}
+
+/* ── SPINNER ── */
+.spinner-wrap{text-align:center;padding:48px 0}
+.spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner-text{font-size:.8rem;color:var(--text3)}
+
+footer{background:var(--navy);color:rgba(255,255,255,.45);font-size:.73rem;text-align:center;padding:14px;letter-spacing:.02em}
+</style>
+</head>
+<body>
+
+<!-- TOPNAV -->
+<nav class="topnav">
+  <div class="topnav-brand">
+    <span class="brand-chip">UITS</span>
+    <span>Department of CSE</span>
+  </div>
+  <div class="nav-badge">Spring 2026</div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="#">Home</a>
+    <span class="sep">›</span>
+    <span>Attendance Fine</span>
+    <span class="sep">›</span>
+    <span>Student Lookup</span>
+  </div>
+  <h1 class="page-title">Attendance Fine — Spring 2026</h1>
+  <p class="page-sub">University of Information Technology &amp; Sciences &nbsp;·&nbsp; Department of Computer Science &amp; Engineering</p>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Navigation</div>
+      <div class="sidebar-item active" onclick="showSection('lookup')">
+        <div class="sidebar-icon">🔍</div> Student Lookup
+      </div>
+      <div class="sidebar-item" onclick="showSection('info')">
+        <div class="sidebar-icon">ℹ️</div> Basic Info
+      </div>
+      <div class="sidebar-item" onclick="showSection('policy')">
+        <div class="sidebar-icon">📋</div> Fine Policy
+      </div>
+      <div class="sidebar-item" onclick="showSection('payment')">
+        <div class="sidebar-icon">💳</div> Payment
+      </div>
+    </div>
+    <div class="sidebar-section" style="border-top:1px solid var(--border);margin-top:8px;padding-top:8px">
+      <div class="sidebar-label">Status</div>
+      <div class="sidebar-item">
+        <div class="sidebar-icon">📅</div> Spring 2026
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-icon">🔒</div> Encrypted Data
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- Step progress -->
+    <div class="step-bar">
+      <div class="step done" id="step1">
+        <div class="step-dot done">✓</div>
+        <span class="step-label">Enter ID</span>
+      </div>
+      <div class="step-line done" id="line1"></div>
+      <div class="step active" id="step2">
+        <div class="step-dot active">2</div>
+        <span class="step-label">View Fines</span>
+      </div>
+      <div class="step-line" id="line2"></div>
+      <div class="step" id="step3">
+        <div class="step-dot">3</div>
+        <span class="step-label">Payment</span>
+      </div>
+    </div>
+
+    <!-- Section: Lookup -->
+    <div id="sec-lookup">
+      <div class="section-card">
+        <div class="section-card-header">
+          <div class="section-card-title"><span class="dot"></span>Student ID Lookup</div>
+        </div>
+        <div class="section-card-body">
+          <div class="input-group">
+            <div class="input-wrap">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <input id="sid-input" type="text" placeholder="Enter Your Full Student ID (e.g. 0432220005101002)" autocomplete="off" spellcheck="false" />
+            </div>
+            <button class="btn btn-primary" onclick="lookup()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Search
+            </button>
+            <button class="btn btn-ghost" onclick="clearResult()">Clear</button>
+          </div>
+          <p style="font-size:.75rem;color:var(--text3);margin-top:10px">Enter your 15-digit student ID to view your attendance fines for Spring 2026.</p>
+        </div>
+      </div>
+
+      <div id="loading" style="display:none" class="section-card">
+        <div class="section-card-body">
+          <div class="spinner-wrap">
+            <div class="spinner"></div>
+            <div class="spinner-text">Decrypting student records…</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="result"></div>
+    </div>
+
+    <!-- Section: Info -->
+    <div id="sec-info" style="display:none">
+      <div class="section-card">
+        <div class="section-card-header">
+          <div class="section-card-title"><span class="dot"></span>Basic Information</div>
+        </div>
+        <div class="section-card-body">
+          <p style="font-size:.85rem;color:var(--text2);line-height:1.7">This portal allows students of UITS Department of CSE to check their attendance fines for the Spring 2026 semester. Enter your Student ID in the lookup section to view your detailed fine breakdown.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Policy -->
+    <div id="sec-policy" style="display:none">
+      <div class="section-card">
+        <div class="section-card-header">
+          <div class="section-card-title"><span class="dot"></span>Fine Policy</div>
+        </div>
+        <div class="section-card-body" style="font-size:.85rem;color:var(--text2);line-height:1.8">
+          <p>• Total fine per student is capped at <strong style="color:var(--text)">BDT 500</strong> regardless of course-wise accumulation.</p>
+          <p>• Students with attendance below <strong style="color:var(--text)">20%</strong> in any course must contact the department before collecting admit cards.</p>
+          <p>• Students who have valid reasons (such as medical emergencies) may apply for a waiver through the department by 13 May. Applications will be reviewed and processed by an anonymous committee, which will approve waivers only if the reason is deemed significant. Approved waivers will then be deducted from the total fine amount.</p>
+          <p>• For queries, contact the Department of CSE office.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Payment -->
+    <div id="sec-payment" style="display:none">
+
+      <div class="section-card">
+        <div class="section-card-header">
+          <div class="section-card-title">
+            <span class="dot" style="background:#e2136e"></span>
+            bKash Payment — Attendance Fine Spring 2026
+          </div>
+          <span style="font-size:.72rem;background:#fce4ef;color:#ad1457;padding:3px 10px;border-radius:4px;font-weight:600;border:1px solid #f48fb1">Merchant Payment</span>
+        </div>
+        <div class="section-card-body">
+
+          <div style="display:grid;grid-template-columns:1fr 200px;gap:24px;align-items:start">
+
+            <!-- Left: Instructions -->
+            <div>
+
+              <!-- Step 1 -->
+              <div style="display:flex;gap:14px;margin-bottom:20px">
+                <div style="width:28px;height:28px;border-radius:50%;background:#e2136e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:2px">1</div>
+                <div>
+                  <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:4px">Open bKash &amp; select <em>Pay Bill / Merchant</em></div>
+                  <div style="font-size:.82rem;color:var(--text2);line-height:1.6">Open the bKash app on your phone. Tap <strong>Pay Bill</strong> or scan the QR code on the right. Choose <strong>Merchant Payment</strong>.</div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div style="display:flex;gap:14px;margin-bottom:20px">
+                <div style="width:28px;height:28px;border-radius:50%;background:#e2136e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:2px">2</div>
+                <div>
+                  <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:6px">Send to the UITS CSE Merchant Number</div>
+                  <div style="background:#fce4ef;border:1px solid #f48fb1;border-radius:var(--radius);padding:12px 16px;display:inline-flex;align-items:center;gap:12px">
+                    <div>
+                      <div style="font-size:.68rem;color:#880e4f;text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:2px">bKash Merchant Number</div>
+                      <div style="font-family:'IBM Plex Mono',monospace;font-size:1.2rem;font-weight:600;color:#ad1457;letter-spacing:.05em">01533-025607</div>
+                    </div>
+                    <button onclick="copyNum()" id="copy-btn" style="background:#e2136e;color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:.75rem;font-weight:600;cursor:pointer;white-space:nowrap">Copy</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div style="display:flex;gap:14px;margin-bottom:20px">
+                <div style="width:28px;height:28px;border-radius:50%;background:#e2136e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:2px">3</div>
+                <div style="flex:1">
+                  <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:4px">Enter the exact amount &amp; add Reference</div>
+                  <div style="font-size:.82rem;color:var(--text2);line-height:1.6;margin-bottom:10px">In the <strong>Reference</strong> field, enter your reference in this exact format:</div>
+                  <div style="background:var(--navy);border-radius:var(--radius);padding:12px 16px;margin-bottom:10px">
+                    <div style="font-size:.68rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Reference Format</div>
+                    <div style="font-family:'IBM Plex Mono',monospace;font-size:.95rem;color:#93c5fd;letter-spacing:.03em">AFS26-<span style="color:#fbbf24">YOUR_FULL_STUDENT_ID</span></div>
+                    <div style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;color:rgba(255,255,255,.45);margin-top:6px">Example: AFS26-04251000053007</div>
+                  </div>
+                  <div style="background:var(--amber-bg);border:1px solid var(--amber-border);border-radius:var(--radius);padding:10px 14px;font-size:.8rem;color:#92400e;line-height:1.6">
+                    ⚠️ <strong>Important:</strong> Using an incorrect reference may delay your payment verification. Always use <strong>AFS26-</strong> followed by your complete Student ID with no spaces.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div style="display:flex;gap:14px">
+                <div style="width:28px;height:28px;border-radius:50%;background:#e2136e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:2px">4</div>
+                <div>
+                  <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:4px">Keep a screenshot of your payment confirmation and store the Transaction ID</div>
+                  <div style="background:var(--red-bg);border:1px solid var(--red-border);border-left:3px solid var(--red);border-radius:var(--radius);padding:12px 16px;font-size:.82rem;color:#b91c1c;line-height:1.7">
+                    📸 <strong>Take a screenshot</strong> of the bKash payment confirmation screen immediately after payment. This screenshot might have to be submitted to the department as proof of payment later.</strong>
+                  </div>
+                  <div style="font-size:.82rem;color:var(--text2);line-height:1.6;margin-bottom:10px"> Note down the bKash Transaction ID (For Example: 9BQ9366TWD) of your payment. </div>
+                </div>
+              </div>
+
+              <!-- Step 5 -->
+              <div style="display:flex;gap:14px">
+                <div style="width:28px;height:28px;border-radius:50%;background:#e2136e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:2px">5</div>
+                <div>
+                  <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:4px">Fill in the payment confirmation form</div>
+                  <div style="font-size:.82rem;color:var(--text2);line-height:1.6;margin-bottom:10px">Fill in the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKVn5aLcFDVdAlieDRXZ7GpFQALUsEqIecPVwx3jEP01aimA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600;text-decoration:underline">Low Attendance Fine Confirmation Form for Spring 2026</a> with your name, ID, bKash number, fine amount, and Transaction ID </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right: QR -->
+              <div style="background:#fff;border:2px dashed #f48fb1;border-radius:var(--radius-lg);padding:16px;margin-bottom:10px;">
+
+                <!-- QR IMAGE -->
+                <img src="bkash_qr.jpeg"
+                    style="width:100%; max-width:180px; height:auto; display:block; margin:0 auto; object-fit:contain;">
+
+                <div style="font-size:.68rem;color:#ad1457;margin-top:8px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">
+                  Scan to Pay
+                </div>
+
+              </div>
+              <!-- <div style="font-size:.72rem;color:var(--text3);line-height:1.6;text-align:left;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px">
+                <strong style="color:var(--text2);display:block;margin-bottom:4px">How to replace the QR:</strong>
+                In <code style="font-size:.7rem;background:var(--border);padding:1px 4px;border-radius:3px">index.html</code>, find the <code style="font-size:.7rem;background:var(--border);padding:1px 4px;border-radius:3px">&lt;!-- PLACEHOLDER QR</code> comment and replace the entire <code style="font-size:.7rem;background:var(--border);padding:1px 4px;border-radius:3px">&lt;svg&gt;</code> block with an <code style="font-size:.7rem;background:var(--border);padding:1px 4px;border-radius:3px">&lt;img src="qr.png"&gt;</code>.
+              </div> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Submission reminder -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;box-shadow:var(--shadow)">
+        <div style="font-size:1.4rem;flex-shrink:0">📋</div>
+        <div>
+          <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:6px">After Payment — Submission Checklist</div>
+          <div style="font-size:.82rem;color:var(--text2);line-height:1.9">
+            ✅ &nbsp;Screenshot saved showing Transaction ID, amount, and date<br>
+            ✅ &nbsp;Reference field shows <span style="font-family:'IBM Plex Mono',monospace;color:var(--accent);font-weight:600">AFS26-YourStudentID</span><br>
+            ✅ &nbsp;Save screenshot if required for submission to the CSE Department office or as instructed<br>
+            ✅ &nbsp;Keep a copy until your payment is fully verified<br>
+            ✅ &nbsp;Fill in the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKVn5aLcFDVdAlieDRXZ7GpFQALUsEqIecPVwx3jEP01aimA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600;text-decoration:underline">Low Attendance Fine Confirmation Form for Spring 2026</a> with your name, ID, bKash number, fine amount, and Transaction ID
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<footer>Data is encrypted client-side · No individual record is transmitted · UITS CSE Spring 2026</footer>
+
+<script>
+const FINE_PASS   = "UITS-CSE-Spring2026-Fine";
+const WAIVER_PASS = "UITS-CSE-Spring2026-Waiver";
+const NONCE       = new Uint8Array([0xd3,0x9a,0x1f,0x8c,0x45,0xb2,0x67,0xe0,0x12,0x34,0x56,0x78]);
+
+async function deriveKey(pass) {
+  const raw = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(pass));
+  return crypto.subtle.importKey("raw", raw, {name:"AES-GCM"}, false, ["decrypt"]);
+}
+async function decrypt(b64, pass) {
+  const raw = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const key = await deriveKey(pass);
+  const plain = await crypto.subtle.decrypt({name:"AES-GCM", iv: raw.slice(0,12)}, key, raw.slice(12));
+  return JSON.parse(new TextDecoder().decode(plain));
+}
+
+let DB = null, WDB = null, _dbPromise = null;
+
+function loadDB() {
+  if (_dbPromise) return _dbPromise;
+  _dbPromise = (async () => {
+    const [fRes, wRes] = await Promise.allSettled([fetch("data.enc"), fetch("waiver.enc")]);
+    if (fRes.status !== "fulfilled" || !fRes.value.ok) {
+      throw new Error("Could not fetch data.enc — make sure it is in the same folder as index.html");
+    }
+    DB = await decrypt(await fRes.value.text(), FINE_PASS);
+    if (wRes.status === "fulfilled" && wRes.value.ok) {
+      try { WDB = await decrypt(await wRes.value.text(), WAIVER_PASS); } catch(e) { WDB = {}; }
+    } else { WDB = {}; }
+  })();
+  _dbPromise.catch(() => { _dbPromise = null; });
+  return _dbPromise;
+}
+
+async function lookup() {
+  const sid = document.getElementById("sid-input").value.trim();
+  if (!sid) return;
+  const res = document.getElementById("result");
+  const load = document.getElementById("loading");
+  res.innerHTML = ""; load.style.display = "block";
+  try {
+    await loadDB();
+    load.style.display = "none";
+    const s = DB[sid];
+    if (!s) { res.innerHTML = err(`No record found for Student ID <strong>${esc(sid)}</strong>. Please verify and try again.`); return; }
+    renderResult(sid, s);
+    setStep(3);
+  } catch(e) {
+    load.style.display = "none";
+    res.innerHTML = err("Failed to load data: " + e.message);
+  }
+}
+
+function renderResult(sid, s) {
+  const rawTotal = s.courses.reduce((a,c) => a + c.fine, 0);
+  const cappedTotal = Math.min(rawTotal, 500);
+  const isCapped = rawTotal > 500;
+  const waiver = (WDB && WDB[sid]) ? parseInt(WDB[sid]) : 0;
+  const finalFine = Math.max(0, cappedTotal - waiver);
+
+  const init = s.name.trim().charAt(0).toUpperCase();
+
+  const uaBanner = s.has_under_attendance ? `
+    <div class="ua-banner">
+      <div class="ua-icon">🚨</div>
+      <div>
+        <h3>Under-Attendance Notice</h3>
+        <p>This student has fallen <strong>below the minimum 20% attendance threshold</strong> in one or more courses.
+        To receive an <strong>Admit Card</strong> for Spring 2026 examinations, the student must
+        <strong>contact the Department of CSE immediately.</strong></p>
+      </div>
+    </div>` : "";
+
+  const rows = s.courses.map(c => `
+    <tr>
+      <td class="code">${esc(c.code)}</td>
+      <td class="course-name">${esc(c.name)}</td>
+      <td class="fine-cell ${c.fine > 0 ? 'fine-red' : 'fine-green'}">৳ ${c.fine.toLocaleString()}</td>
+    </tr>`).join("");
+
+  const capTag = isCapped ? `<span class="cap-tag">Capped at ৳500</span>` : "";
+  const waiverVal = waiver > 0
+    ? `<span style="font-family:'IBM Plex Mono',monospace;font-size:1rem;font-weight:600;color:var(--green)">− ৳ ${waiver.toLocaleString()}</span>`
+    : `<span class="no-waiver">No waiver applied</span>`;
+
+  document.getElementById("result").innerHTML = `
+    <div class="student-card" style="animation:fadeIn .3s ease">
+      <div class="avatar">${init}</div>
+      <div class="student-meta">
+        <h2>${esc(s.name)}</h2>
+        <div class="meta-row">
+          <span class="chip chip-blue">ID: ${esc(sid)}</span>
+          ${s.has_under_attendance ? '<span class="chip" style="background:#fef2f2;border-color:#fecaca;color:#b91c1c">⚠ Under-Attendance</span>' : '<span class="chip chip-green">✓ Attendance OK</span>'}
+        </div>
+      </div>
+    </div>
+
+    ${uaBanner}
+
+    <div class="section-card" style="animation:fadeIn .35s ease">
+          <div class="section-card-header">
+            <div class="section-card-title"><span class="dot"></span>Course-wise Fine Breakdown</div>
+            <span style="font-size:.72rem;color:var(--text3)">${s.courses.length} course(s)</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Course Code</th>
+                  <th>Course Name</th>
+                  <th style="text-align:right">Fine Amount</th>
+                </tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+          <div class="totals-grid" style="grid-template-columns:1fr 1fr">
+            <div class="total-cell waiver-cell">
+              <span class="total-label" style="display:flex;align-items:center;gap:6px">
+                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 14l-4-4 4-4"/><path d="M5 10h11a4 4 0 0 1 0 8h-1"/></svg>
+                Waiver
+              </span>
+              ${waiverVal}
+            </div>
+            <div class="total-cell highlight">
+              <span class="total-label">Final Fine to Pay</span>
+              <span class="total-value">${finalFine === 0 ? '<span style="color:#4ade80">৳ 0</span>' : '৳ ' + finalFine.toLocaleString()}</span>
+            </div>
+          </div>
+        </div>
+    </div>`;
+}
+
+function err(msg) {
+  return `<div class="alert alert-error"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>${msg}</span></div>`;
+}
+function esc(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function clearResult() {
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("sid-input").value = "";
+  setStep(2);
+}
+function setStep(n) {
+  for (let i=1;i<=3;i++) {
+    const s = document.getElementById("step"+i);
+    const dot = s.querySelector(".step-dot");
+    s.classList.remove("done","active");
+    dot.classList.remove("done","active");
+    dot.textContent = i;
+    if (i < n) { s.classList.add("done"); dot.classList.add("done"); dot.textContent = "✓"; }
+    else if (i === n) { s.classList.add("active"); dot.classList.add("active"); }
+    if (i < 3) {
+      const l = document.getElementById("line"+i);
+      l.classList.toggle("done", i < n);
+    }
+  }
+}
+function showSection(name) {
+  ["lookup","info","policy","payment"].forEach(s => {
+    document.getElementById("sec-"+s).style.display = s===name ? "" : "none";
+  });
+  document.querySelectorAll(".sidebar-item").forEach((el,i) => {
+    el.classList.toggle("active", i===["lookup","info","policy","payment"].indexOf(name));
+  });
+}
+function copyNum() {
+  navigator.clipboard.writeText("01533025607").then(() => {
+    const btn = document.getElementById("copy-btn");
+    btn.textContent = "Copied!";
+    btn.style.background = "#16a34a";
+    setTimeout(() => { btn.textContent = "Copy"; btn.style.background = "#e2136e"; }, 2000);
+  });
+}
+document.getElementById("sid-input").addEventListener("keydown", e => { if (e.key==="Enter") lookup(); });
+</script>
+<style>@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}</style>
+</body>
+</html>
